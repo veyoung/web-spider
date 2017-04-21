@@ -1,15 +1,16 @@
 package utils;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Maps;
-import okhttp3.Headers;
-import okhttp3.HttpUrl;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
+import okhttp3.*;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang3.StringUtils;
+import zhihu.model.ZhihuResult;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -19,6 +20,8 @@ public class HttpUtil {
     private static final String HEADER_AUTHORIZATION_NAME = "Authorization";
 
     private OkHttpClient okHttpClient;
+
+    private ObjectMapper objectMapper = new ObjectMapper();
 
     private static HttpUtil instance = new HttpUtil();
 
@@ -43,6 +46,41 @@ public class HttpUtil {
             ex.printStackTrace();
         }
         return "";
+    }
+
+    /**
+     * get请求
+     *
+     * @param url
+     * @param headers
+     * @return
+     */
+    public ZhihuResult get(String url, Map<String, String> headers) {
+        return this.get(url, headers, null, new TypeReference<ZhihuResult>() {
+        });
+    }
+
+    /**
+     *
+     * @param url
+     * @param headers
+     * @param queryParams
+     * @param typeReference
+     * @return
+     */
+    public ZhihuResult get(String url, Map<String, String> headers, Map<String, Object> queryParams, TypeReference<ZhihuResult>
+            typeReference) {
+        String newUrl = buildUrlParams(url, queryParams);
+        Request request = new Request.Builder().url(newUrl).headers(buildHeaders(headers)).build();
+
+        Response response;
+        try {
+            response = okHttpClient.newCall(request).execute();
+            return objectMapper.readValue(response.body().string(), typeReference);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     private Headers buildHeaders(Map<String, String> headers) {

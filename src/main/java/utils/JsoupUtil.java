@@ -42,14 +42,57 @@ public class JsoupUtil {
      */
     public Set<String> extractImageUrlsFromPageUrl(String url, Integer minWidth, Integer minHeight) {
 
-        Set<String> urls = Sets.newHashSet();
+        Document document = getDocument(url);
+        return extractImageUrls(document, minWidth, minHeight);
+    }
+
+    /**
+     *
+     * @param html
+     * @param minWidth
+     * @param minHeight
+     * @return
+     */
+    public Set<String> extractImageUrlsFromHtmlText(String html, Integer minWidth, Integer minHeight) {
+
+        Document document = getDocument(html, "");
+        return extractImageUrls(document, minWidth, minHeight);
+    }
+
+    /**
+     *
+     * @param url
+     * @return
+     */
+    public List<String> extractLinksFromPageUrl(String url) {
+
+        List<String> urls = Lists.newArrayList();
+        Document document = getDocument(url);
+
+        Elements linkElements = document.select("a[href]");
+        for (Element link : linkElements) {
+            urls.add(link.attr("abs:href"));
+        }
+        return urls;
+    }
+
+    private Document getDocument(String url) {
         Document document = null;
         try {
             document = Jsoup.connect(url).get();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+        return document;
+    }
 
+    private Document getDocument(String html, String baseUri) {
+        Document document = Jsoup.parse(html,baseUri);
+        return document;
+    }
+
+    public Set<String> extractImageUrls(Document document, Integer minWidth, Integer minHeight) {
+        Set<String> urls = Sets.newHashSet();
         Elements imgElements = document.select("[src]");
         for (Element src : imgElements) {
             if ("img".equals(src.tagName())) {
@@ -78,30 +121,8 @@ public class JsoupUtil {
         return urls;
     }
 
-    /**
-     *
-     * @param url
-     * @return
-     */
-    public List<String> extractLinksFromPageUrl(String url) {
-
-        List<String> urls = Lists.newArrayList();
-        Document document = null;
-        try {
-            document = Jsoup.connect(url).get();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-        Elements linkElements = document.select("a[href]");
-        for (Element link : linkElements) {
-            urls.add(link.attr("abs:href"));
-        }
-        return urls;
-    }
-
     public static void main(String[] args) throws IOException {
-        String url = "http://www.zhihu.com/question/26037846?limit=1000&offset=0";
+        String url = "http://www.zhihu.com/question/26037846?";
         System.out.println(String.format("Fetching %s...", url));
 //        List<String> links = JsoupUtil.getInstance().extractLinksFromPageUrl(url);
 //        links.forEach(link -> System.out.println(link));
