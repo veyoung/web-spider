@@ -8,44 +8,75 @@ import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import zhihu.model.ZhihuResult;
 
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 /**
- * Created by young on 2017-4-21.
+ * Created by zhangxy-j on 2017/1/22.
  */
 public class HttpUtil {
+
+    private static HttpUtil instance = new HttpUtil();
+
     private static final String HEADER_AUTHORIZATION_NAME = "Authorization";
+
+    private static final String CONTENT_TYPE_APPLICATION_JSON = "application/json";
 
     private OkHttpClient okHttpClient;
 
     private ObjectMapper objectMapper = new ObjectMapper();
 
-    private static HttpUtil instance = new HttpUtil();
-
     private HttpUtil() {
-        okHttpClient = new OkHttpClient();
-    }
 
-    private static HttpUtil getInstance() {
-        return instance;
-    }
+        X509TrustManager xtm = new X509TrustManager() {
+            @Override
+            public void checkServerTrusted(X509Certificate[] chain, String authType) {
+            }
 
-    public String get(String url) {
-        return get(url,null,null);
-    }
+            @Override
+            public void checkClientTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException {
 
-    public String get(String url, Map<String, String> headers, Map<String, Object> queryParams) {
-        String newUrl = buildUrlParams(url, queryParams);
-        Request request = new Request.Builder().url(newUrl).headers(buildHeaders(headers)).build();
+            }
+
+            @Override
+            public X509Certificate[] getAcceptedIssuers() {
+                X509Certificate[] x509Certificates = new X509Certificate[0];
+                return x509Certificates;
+            }
+        };
+        SSLContext sslContext = null;
         try {
-            return okHttpClient.newCall(request).execute().body().string();
-        } catch (IOException ex) {
-            ex.printStackTrace();
+            sslContext = SSLContext.getInstance("SSL");
+
+            sslContext.init(null, new TrustManager[]{xtm}, new SecureRandom());
+
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
         }
-        return "";
+        HostnameVerifier DO_NOT_VERIFY = (hostname, session) -> true;
+        okHttpClient = new OkHttpClient.Builder()
+                .connectTimeout(5, TimeUnit.SECONDS)
+                .readTimeout(10, TimeUnit.SECONDS)
+                .sslSocketFactory(sslContext.getSocketFactory())
+                .hostnameVerifier(DO_NOT_VERIFY)
+                .build();
+    }
+
+    public static HttpUtil instance() {
+        return instance;
     }
 
     /**
@@ -56,30 +87,40 @@ public class HttpUtil {
      * @return
      */
     public ZhihuResult get(String url, Map<String, String> headers) {
-        return this.get(url, headers, null, new TypeReference<ZhihuResult>() {
-        });
+        Request request = new Request.Builder().url(url).headers(buildHeaders(headers)).build();
+        Response response = null;
+        try {
+            response = okHttpClient.newCall(request).execute();
+            return objectMapper.readValue(response.body().string(), new TypeReference<ZhihuResult>() {
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**
+     * get请求
      *
      * @param url
      * @param headers
      * @param queryParams
-     * @param typeReference
+     * @param <T>
      * @return
      */
     public ZhihuResult get(String url, Map<String, String> headers, Map<String, Object> queryParams, TypeReference<ZhihuResult>
             typeReference) {
         String newUrl = buildUrlParams(url, queryParams);
         Request request = new Request.Builder().url(newUrl).headers(buildHeaders(headers)).build();
-
-        Response response;
+        Response response = null;
         try {
             response = okHttpClient.newCall(request).execute();
-            return objectMapper.readValue(response.body().string(), typeReference);
+            String responseBodyString = response.body().string();
+            return objectMapper.readValue(responseBodyString, typeReference);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         return null;
     }
 
@@ -97,21 +138,8 @@ public class HttpUtil {
         if (StringUtils.isBlank(url) || MapUtils.isEmpty(params)) {
             return url;
         }
-
-        String scheme = url.substring(0, url.indexOf("://"));
-        String hostAndPath = url.replace(scheme + "://", "");
-        String host = hostAndPath.substring(0, hostAndPath.indexOf("/"));
-        String pathSegment = hostAndPath.replace(host, "");
-        if (StringUtils.isNotBlank(pathSegment) && pathSegment.startsWith("/")) {
-            pathSegment = pathSegment.substring(1);
-        }
-
-        String[] urlSegments = new String[3];
-        urlSegments[0] = scheme;
-        urlSegments[1] = host;
-        urlSegments[2] = pathSegment;
-
         HttpUrl.Builder urlBuilder = new HttpUrl.Builder();
+        String[] urlSegments = splitUrlSegments(url);
         urlBuilder.scheme(urlSegments[0]);
         if (urlSegments[1].indexOf(":") > 0) {
             String[] hostAndPort = urlSegments[1].split(":");
@@ -128,17 +156,34 @@ public class HttpUtil {
         return urlBuilder.toString();
     }
 
+    private String[] splitUrlSegments(String url) {
+        String scheme = url.substring(0, url.indexOf("://"));
+        String hostAndPath = url.replace(scheme + "://", "");
+        String host = hostAndPath.substring(0, hostAndPath.indexOf("/"));
+        String pathSegment = hostAndPath.replace(host, "");
+        if (StringUtils.isNotBlank(pathSegment) && pathSegment.startsWith("/")) {
+            pathSegment = pathSegment.substring(1);
+        }
+
+        String[] urlSegments = new String[3];
+        urlSegments[0] = scheme;
+        urlSegments[1] = host;
+        urlSegments[2] = pathSegment;
+
+        return urlSegments;
+    }
+
     public static Map<String, String> buildAuthorizationHeaderMap(String accessToken) {
         Map<String, String> headers = Maps.newHashMap();
-        headers.put(HEADER_AUTHORIZATION_NAME, "Bearer " + accessToken);
+        headers.put(HEADER_AUTHORIZATION_NAME, "bearer " + accessToken);
 
         return headers;
     }
 
     public static void main(String[] args) {
-        Map<String, String> headers = Maps.newHashMap();
-        headers.put("User-Agent","Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36");
-        String content = HttpUtil.getInstance().get("http://www.zhihu.com/question/57443806", headers, null);
-        System.out.print(content);
+        String accessToken = "Mi4wQUFBQVJlVXRBQUFBRUVJYkpFT2tDeGNBQUFCaEFsVk55WmdoV1FDVnNrUzQ0NWtzMVFPQ3NteDBkS3ZKVlNCTE13|1492784497|8d0e24247d67ad85821dd79e438c056231de4921";
+        String url = "https://www.zhihu.com/api/v4/questions/57443806/answers?include=data%5B*%5D.is_normal%2Cis_sticky%2Ccollapsed_by%2Csuggest_edit%2Ccomment_count%2Ccan_comment%2Ccontent%2Ceditable_content%2Cvoteup_count%2Creshipment_settings%2Ccomment_permission%2Cmark_infos%2Ccreated_time%2Cupdated_time%2Crelationship.is_authorized%2Cis_author%2Cvoting%2Cis_thanked%2Cis_nothelp%2Cupvoted_followees%3Bdata%5B*%5D.author.badge%5B%3F(type%3Dbest_answerer)%5D.topics&offset&limit=20&sort_by=default";
+        ZhihuResult result = HttpUtil.instance().get(url, HttpUtil.buildAuthorizationHeaderMap(accessToken));
+        System.out.print(result.getPaging().getTotals());
     }
 }
