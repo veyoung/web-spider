@@ -23,7 +23,6 @@ public class JsoupUtil {
         return intance;
     }
 
-
     /**
      *
      * @param url
@@ -64,9 +63,9 @@ public class JsoupUtil {
      * @param url
      * @return
      */
-    public List<String> extractLinksFromPageUrl(String url) {
+    public Set<String> extractLinksFromPageUrl(String url) {
 
-        List<String> urls = Lists.newArrayList();
+        Set<String> urls = Sets.newHashSet();
         Document document = getDocument(url);
 
         Elements linkElements = document.select("a[href]");
@@ -74,6 +73,11 @@ public class JsoupUtil {
             urls.add(link.attr("abs:href"));
         }
         return urls;
+    }
+
+    public String extractTitleFromPageUrl(String url) {
+        Document document = getDocument(url);
+        return document.head().select("title").text();
     }
 
     private Document getDocument(String url) {
@@ -130,5 +134,7 @@ public class JsoupUtil {
 //        Set<String> images = JsoupUtil.getInstance().extractImageUrlsFromPageUrl(url);
 //        System.out.println("The length of images is " + images.size());
 //        images.forEach(imageUrl -> DownloadUtil.getInstance().downloadImageAndSave(imageUrl));
+
+    JsoupUtil.getInstance().extractLinksFromPageUrl("https://www.189sihu.com/Html/63/9641.html");
     }
 }

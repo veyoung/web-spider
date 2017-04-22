@@ -1,22 +1,17 @@
 package zhihu;
 
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.sun.javafx.binding.StringFormatter;
-import jdk.internal.org.objectweb.asm.TypeReference;
 import org.assertj.core.util.Lists;
 import org.springframework.util.CollectionUtils;
 import utils.DownloadUtil;
 import utils.HttpUtil;
+import utils.RegUtil;
 import zhihu.model.ZhihuAnswer;
-import zhihu.model.ZhihuPaging;
 import zhihu.model.ZhihuResult;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by young on 2017-4-21.
@@ -43,6 +38,7 @@ public class ZhihuSpider {
     public List<ZhihuAnswer> listAnswers(String questionId) {
         List<ZhihuAnswer> answers = Lists.newArrayList();
 
+        System.out.println("start acquire answers........");
         String url = String.format(QUESTION_URL_TEMPLATE, questionId);
         ZhihuResult firstPageResult = HttpUtil.instance().get(url,
                 HttpUtil.buildAuthorizationHeaderMap(ACCESS_TOKEN),
@@ -73,22 +69,6 @@ public class ZhihuSpider {
         return answers;
     }
 
-    public static Set<String> getImageSrc(String htmlCode) {
-        Set<String> imageSrcs = Sets.newHashSet();
-        Pattern p = Pattern.compile("<img\\b[^>]*\\bsrc\\b\\s*=\\s*('|\")?([^'\"\n\r\f>]+(\\.jpg|\\.bmp|\\.eps|\\.gif|\\.mif|\\.miff|\\.png|\\.tif|\\.tiff|\\.svg|\\.wmf|\\.jpe|\\.jpeg|\\.dib|\\.ico|\\.tga|\\.cut|\\.pic)\\b)[^>]*>", Pattern.CASE_INSENSITIVE);
-        Matcher m = p.matcher(htmlCode);
-        String quote = null;
-        String src = null;
-        while (m.find()) {
-            quote = m.group(1);
-
-            // src=https://sms.reyo.cn:443/temp/screenshot/zY9Ur-KcyY6-2fVB1-1FSH4.png
-            src = (quote == null || quote.trim().length() == 0) ? m.group(2).split("\\s+")[0] : m.group(2);
-            imageSrcs.add(src);
-        }
-        return imageSrcs;
-    }
-
     public void downloadImages(String questionId) {
         System.out.println("start........");
         List<ZhihuAnswer> answers = listAnswers(questionId);
@@ -98,9 +78,10 @@ public class ZhihuSpider {
 
         String answerName = answers.get(0).getQuestion().getTitle();
         for (ZhihuAnswer answer : answers) {
-            String folder = answerName + "/" + answer.getId().toString();
+            //String folder = answerName + "/" + answer.getId().toString();
+            String folder = answerName;
             if (answer.getVoteup_count() != null && answer.getVoteup_count() > 1) {
-                Set<String> imageUrls = ZhihuSpider.getImageSrc(answer.getContent());
+                Set<String> imageUrls = RegUtil.extractImageSrc(answer.getContent());
                 for (String imageUrl : imageUrls) {
                     DownloadUtil.getInstance().downloadImageAndSave(imageUrl, folder);
                 }
@@ -108,9 +89,8 @@ public class ZhihuSpider {
         }
     }
 
-
     public static void main(String[] args) {
         ZhihuSpider spider = new ZhihuSpider();
-        spider.downloadImages("28116784");
+        spider.downloadImages("22182464");
     }
 }

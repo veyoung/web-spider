@@ -51,7 +51,7 @@ public class DownloadUtil {
         URLConnection con = null;
         try {
             con = new URL(urlString).openConnection();
-            con.setConnectTimeout(5 * 1000);
+            con.setConnectTimeout(500 * 1000);
             con.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)");
         } catch (MalformedURLException ex) {
             ex.printStackTrace();
