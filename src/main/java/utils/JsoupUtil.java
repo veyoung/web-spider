@@ -122,13 +122,13 @@ public class JsoupUtil {
     }
 
     public static void main(String[] args) throws IOException {
-        String url = "http://www.zhihu.com/question/26037846?";
-        System.out.println(String.format("Fetching %s...", url));
-//        List<String> links = JsoupUtil.getInstance().extractLinksFromPageUrl(url);
-//        links.forEach(link -> System.out.println(link));
-
-        Set<String> images = JsoupUtil.getInstance().extractImageUrlsFromPageUrl(url, 500, 500);
-        System.out.println("The length of images is " + images.size());
-        //images.forEach(imageUrl -> DownloadUtil.getInstance().downloadImageAndSave(imageUrl));
+//        String url = "http://www.189sihu.com/Html/63/9750.html";
+//        System.out.println(String.format("Fetching %s...", url));
+////        List<String> links = JsoupUtil.getInstance().extractLinksFromPageUrl(url);
+////        links.forEach(link -> System.out.println(link));
+//
+//        Set<String> images = JsoupUtil.getInstance().extractImageUrlsFromPageUrl(url);
+//        System.out.println("The length of images is " + images.size());
+//        images.forEach(imageUrl -> DownloadUtil.getInstance().downloadImageAndSave(imageUrl));
     }
 }

@@ -27,6 +27,8 @@ import java.util.concurrent.TimeUnit;
  */
 public class HttpUtil {
 
+    private static final String ACCESS_TOKEN = "Mi4wQUFBQVJlVXRBQUFBRUVJYkpFT2tDeGNBQUFCaEFsVk55WmdoV1FDVnNrUzQ0NWtzMVFPQ3NteDBkS3ZKVlNCTE13|1492822777|ef89f48257a3b1d5697653cff8cab75dcaf94b45";
+
     private static HttpUtil instance = new HttpUtil();
 
     private static final String HEADER_AUTHORIZATION_NAME = "Authorization";
@@ -105,7 +107,6 @@ public class HttpUtil {
      * @param url
      * @param headers
      * @param queryParams
-     * @param <T>
      * @return
      */
     public ZhihuResult get(String url, Map<String, String> headers, Map<String, Object> queryParams, TypeReference<ZhihuResult>
@@ -181,9 +182,8 @@ public class HttpUtil {
     }
 
     public static void main(String[] args) {
-        String accessToken = "Mi4wQUFBQVJlVXRBQUFBRUVJYkpFT2tDeGNBQUFCaEFsVk55WmdoV1FDVnNrUzQ0NWtzMVFPQ3NteDBkS3ZKVlNCTE13|1492784497|8d0e24247d67ad85821dd79e438c056231de4921";
         String url = "https://www.zhihu.com/api/v4/questions/57443806/answers?include=data%5B*%5D.is_normal%2Cis_sticky%2Ccollapsed_by%2Csuggest_edit%2Ccomment_count%2Ccan_comment%2Ccontent%2Ceditable_content%2Cvoteup_count%2Creshipment_settings%2Ccomment_permission%2Cmark_infos%2Ccreated_time%2Cupdated_time%2Crelationship.is_authorized%2Cis_author%2Cvoting%2Cis_thanked%2Cis_nothelp%2Cupvoted_followees%3Bdata%5B*%5D.author.badge%5B%3F(type%3Dbest_answerer)%5D.topics&offset&limit=20&sort_by=default";
-        ZhihuResult result = HttpUtil.instance().get(url, HttpUtil.buildAuthorizationHeaderMap(accessToken));
+        ZhihuResult result = HttpUtil.instance().get(url, HttpUtil.buildAuthorizationHeaderMap(ACCESS_TOKEN));
         System.out.print(result.getPaging().getTotals());
     }
 }
