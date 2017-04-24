@@ -1,0 +1,39 @@
+server:
+  port: 9999
+spring:
+  profiles: default
+  profiles.include: mysql, mybatis,elasticsearch
+---
+spring:
+  profiles: mysql
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/zhihu?useUnicode=true&amp;characterEncoding=UTF-8&allowMultiQueries=true
+    username: root
+    password: root
+    initialize: false
+---
+spring:
+  profiles: mybatis
+  mybatis:
+    mapperLocations: classpath:zhihu/com/young/mapper/*.xml
+    typeAliasesPackage: zhihu.com.young.model
+---
+spring:
+   profiles: elasticsearch
+   data:
+      elasticsearch:
+          cluster-name: #默认为elasticsearch
+          cluster-nodes: 127.0.0.1:9300
+          properties:
+              path:
+                logs: C:/Users/young/elasticsearch/log #elasticsearch日志存储目录
+                data: C:/Users/young/elasticsearch/data #elasticsearch数据存储目录
+---
+logging:
+  level:
+    org.springframework: WARN
+    com.young.mapper: DEBUG
+  file: logs/spring-boot-logging.log
+
+
