@@ -2,7 +2,7 @@ server:
   port: 9999
 spring:
   profiles: default
-  profiles.include: mysql, mybatis,elasticsearch
+  profiles.include: mysql, mybatis,rabbitmq
 ---
 spring:
   profiles: mysql
@@ -29,6 +29,14 @@ spring:
               path:
                 logs: C:/Users/young/elasticsearch/log #elasticsearch日志存储目录
                 data: C:/Users/young/elasticsearch/data #elasticsearch数据存储目录
+---
+spring:
+  profiles: rabbitmq
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 ---
 logging:
   level:
