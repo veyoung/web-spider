@@ -40,8 +40,6 @@ public class DownloadUtil {
         }
 
         urlString = urlString.replaceFirst("https", "http");
-        System.out.println(">>Start downloading image " + urlString);
-
         String[] urlArr = urlString.split("/");
         String fileName = urlArr[urlArr.length - 1];
         if (!fileName.contains(".")) {
@@ -51,7 +49,7 @@ public class DownloadUtil {
         URLConnection con = null;
         try {
             con = new URL(urlString).openConnection();
-            con.setConnectTimeout(500 * 1000);
+            con.setConnectTimeout(1000 * 1000);
             con.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)");
         } catch (MalformedURLException ex) {
             ex.printStackTrace();
@@ -70,10 +68,19 @@ public class DownloadUtil {
                 file.mkdirs();
             }
 
+            String filePathAndName = file.getPath() + "\\" + fileName;
+            File imageFile = new File(filePathAndName);
+            if (imageFile.exists()) {
+                System.out.println("image exist...");
+                return;
+            } else {
+                imageFile.createNewFile();
+            }
+
             byte[] bs = new byte[1024];
             int len;
             is = con.getInputStream();
-            os = new FileOutputStream(file.getPath() + "\\" + fileName);
+            os = new FileOutputStream(imageFile);
             while ((len = is.read(bs)) != -1) {
                 os.write(bs, 0, len);
             }

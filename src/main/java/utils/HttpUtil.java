@@ -70,8 +70,8 @@ public class HttpUtil {
         }
         HostnameVerifier DO_NOT_VERIFY = (hostname, session) -> true;
         okHttpClient = new OkHttpClient.Builder()
-                .connectTimeout(5, TimeUnit.SECONDS)
-                .readTimeout(10, TimeUnit.SECONDS)
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
                 .sslSocketFactory(sslContext.getSocketFactory())
                 .hostnameVerifier(DO_NOT_VERIFY)
                 .build();
@@ -97,6 +97,13 @@ public class HttpUtil {
             });
         } catch (IOException e) {
             e.printStackTrace();
+            if (response != null) {
+                try {
+                    System.out.println(String.format("Send http[GET] request to %s error,response string is.....%s", url, response.body().string()));
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
         }
         return null;
     }

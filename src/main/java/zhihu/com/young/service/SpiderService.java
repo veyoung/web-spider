@@ -19,6 +19,8 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * Created by young on 2017-4-24.
@@ -37,8 +39,12 @@ public class SpiderService {
 
     @Autowired
     private AnswerMapper answerMapper;
+
     @Autowired
     private AnswerSearchRepository articleSearchRepository;
+
+    private ExecutorService executorService;
+
 
     @PostConstruct
     public void init() {
@@ -47,8 +53,15 @@ public class SpiderService {
         queryParams.put("include", "data[*].is_normal,is_sticky,collapsed_by,suggest_edit,comment_count,can_comment,content,editable_content,voteup_count,reshipment_settings,comment_permission,mark_infos,created_time,updated_time,relationship.is_authorized,is_author,voting,is_thanked,is_nothelp,upvoted_followees;data[*].author.badge[?(type=best_answerer)].topics");
         queryParams.put("limit", 20);
         queryParams.put("offset", 0);
+
+        executorService = Executors.newFixedThreadPool(20);
     }
 
+    /**
+     * 查询指定问题下的所有回答
+     * @param questionId  问题id
+     * @return
+     */
     public List<ZhihuAnswer> listAnswers(String questionId) {
         List<ZhihuAnswer> answers = Lists.newArrayList();
 
@@ -74,6 +87,10 @@ public class SpiderService {
                     new com.fasterxml.jackson.core.type.TypeReference<ZhihuResult>() {
                     }
             );
+            if (currentPage == null) {
+                continue;
+            }
+
             if (currentPage.getData() != null) {
                 answers.addAll(currentPage.getData());
             }
@@ -83,9 +100,25 @@ public class SpiderService {
         return answers;
     }
 
+    /**
+     * 下载图片
+     * @param questionId  问题ID
+     */
     public void downloadImages(String questionId) {
         System.out.println("start download images of question["+ questionId+"].....");
         List<ZhihuAnswer> answers = listAnswers(questionId);
+        if (CollectionUtils.isEmpty(answers)) {
+            return;
+        }
+        downloadImages(answers);
+    }
+
+
+    /**
+     * 下载图片
+     * @param answers  回答的集合
+     */
+    public void downloadImages(List<ZhihuAnswer> answers) {
         if (CollectionUtils.isEmpty(answers)) {
             return;
         }
@@ -97,7 +130,12 @@ public class SpiderService {
             if (answer.getVoteup_count() != null && answer.getVoteup_count() > 1) {
                 Set<String> imageUrls = RegUtil.extractImageSrc(answer.getContent());
                 for (String imageUrl : imageUrls) {
-                    DownloadUtil.getInstance().downloadImageAndSave(imageUrl, folder);
+                    executorService.execute((new Runnable() {
+                        public void run() {
+                            System.out.println(Thread.currentThread().getName() + " is running download image task...");
+                            DownloadUtil.getInstance().downloadImageAndSave(imageUrl, folder);
+                        }
+                    }));
                 }
             }
         }

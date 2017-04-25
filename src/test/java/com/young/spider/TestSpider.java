@@ -42,7 +42,7 @@ public class TestSpider {
     }
 
     @Test
-    public void downloadImages() {
+    public void testDownloadImages() {
         spiderService.downloadImages("26037846");
     }
 
