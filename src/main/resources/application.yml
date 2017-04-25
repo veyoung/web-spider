@@ -2,7 +2,7 @@ server:
   port: 9999
 spring:
   profiles: default
-  profiles.include: mysql, mybatis,rabbitmq
+  profiles.include: mysql
 ---
 spring:
   profiles: mysql
@@ -16,8 +16,8 @@ spring:
 spring:
   profiles: mybatis
   mybatis:
-    mapperLocations: classpath:zhihu/com/young/mapper/*.xml
-    typeAliasesPackage: zhihu.com.young.model
+    mapperLocations: classpath:com/young/mapper/*.xml
+    typeAliasesPackage: com.young.model
 ---
 spring:
    profiles: elasticsearch

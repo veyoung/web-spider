@@ -1,24 +1,25 @@
 package com.young.spider;
 
+import com.young.MyApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import utils.IdGenerator;
-import zhihu.ZhihuApplication;
-import zhihu.com.young.mapper.AnswerMapper;
-import zhihu.com.young.model.Answer;
-import zhihu.com.young.service.CollectionService;
-import zhihu.com.young.service.SpiderService;
+import com.young.utils.IdGenerator;
+import com.young.mapper.AnswerMapper;
+import com.young.model.Answer;
+import com.young.zhihu.service.CollectionService;
+import com.young.zhihu.service.SpiderService;
 
+import java.io.IOException;
 import java.util.Set;
 
 /**
  * Created by young on 2017-4-21.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = ZhihuApplication.class)
+@SpringBootTest(classes = MyApplication.class)
 public class TestSpider {
 
     @Autowired
@@ -43,7 +44,12 @@ public class TestSpider {
 
     @Test
     public void testDownloadImages() {
-        spiderService.downloadImages("26037846");
+        spiderService.downloadImages("57443806");
+        try {
+          Thread.sleep(100000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test

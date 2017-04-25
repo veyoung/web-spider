@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.young.mapper.AnswerMapper">
+  <resultMap id="BaseResultMap" type="com.young.model.Answer">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="editable_content" jdbcType="VARCHAR" property="editableContent" />
+    <result column="excerpt" jdbcType="VARCHAR" property="excerpt" />
+    <result column="collapsed_by" jdbcType="VARCHAR" property="collapsedBy" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime" />
+    <result column="voteup_count" jdbcType="INTEGER" property="voteupCount" />
+    <result column="is_collapsed" jdbcType="TINYINT" property="isCollapsed" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="comment_permission" jdbcType="VARCHAR" property="commentPermission" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="comment_count" jdbcType="INTEGER" property="commentCount" />
+    <result column="extras" jdbcType="VARCHAR" property="extras" />
+    <result column="reshipment_settings" jdbcType="VARCHAR" property="reshipmentSettings" />
+    <result column="is_copyable" jdbcType="TINYINT" property="isCopyable" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="thumbnail" jdbcType="VARCHAR" property="thumbnail" />
+    <result column="is_normal" jdbcType="TINYINT" property="isNormal" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, editable_content, excerpt, collapsed_by, created_time, updated_time, voteup_count,
+    is_collapsed, url, comment_permission, content, comment_count, extras, reshipment_settings,
+    is_copyable, type, thumbnail, is_normal
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from answer
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from answer
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.young.model.Answer">
+    insert into answer (id, editable_content, excerpt,
+    collapsed_by, created_time, updated_time,
+    voteup_count, is_collapsed, url,
+    comment_permission, content, comment_count,
+    extras, reshipment_settings, is_copyable,
+    type, thumbnail, is_normal
+    )
+    values (#{id,jdbcType=BIGINT}, #{editableContent,jdbcType=VARCHAR}, #{excerpt,jdbcType=VARCHAR},
+    #{collapsedBy,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, #{updatedTime,jdbcType=TIMESTAMP},
+    #{voteupCount,jdbcType=INTEGER}, #{isCollapsed,jdbcType=TINYINT}, #{url,jdbcType=VARCHAR},
+    #{commentPermission,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{commentCount,jdbcType=INTEGER},
+    #{extras,jdbcType=VARCHAR}, #{reshipmentSettings,jdbcType=VARCHAR}, #{isCopyable,jdbcType=TINYINT},
+    #{type,jdbcType=VARCHAR}, #{thumbnail,jdbcType=VARCHAR}, #{isNormal,jdbcType=TINYINT}
+    )
+  </insert>
+  <insert id="insertSelective" parameterType="com.young.model.Answer">
+    insert into answer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="editableContent != null">
+        editable_content,
+      </if>
+      <if test="excerpt != null">
+        excerpt,
+      </if>
+      <if test="collapsedBy != null">
+        collapsed_by,
+      </if>
+      <if test="createdTime != null">
+        created_time,
+      </if>
+      <if test="updatedTime != null">
+        updated_time,
+      </if>
+      <if test="voteupCount != null">
+        voteup_count,
+      </if>
+      <if test="isCollapsed != null">
+        is_collapsed,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="commentPermission != null">
+        comment_permission,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="commentCount != null">
+        comment_count,
+      </if>
+      <if test="extras != null">
+        extras,
+      </if>
+      <if test="reshipmentSettings != null">
+        reshipment_settings,
+      </if>
+      <if test="isCopyable != null">
+        is_copyable,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="thumbnail != null">
+        thumbnail,
+      </if>
+      <if test="isNormal != null">
+        is_normal,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="editableContent != null">
+        #{editableContent,jdbcType=VARCHAR},
+      </if>
+      <if test="excerpt != null">
+        #{excerpt,jdbcType=VARCHAR},
+      </if>
+      <if test="collapsedBy != null">
+        #{collapsedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null">
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedTime != null">
+        #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="voteupCount != null">
+        #{voteupCount,jdbcType=INTEGER},
+      </if>
+      <if test="isCollapsed != null">
+        #{isCollapsed,jdbcType=TINYINT},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="commentPermission != null">
+        #{commentPermission,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="commentCount != null">
+        #{commentCount,jdbcType=INTEGER},
+      </if>
+      <if test="extras != null">
+        #{extras,jdbcType=VARCHAR},
+      </if>
+      <if test="reshipmentSettings != null">
+        #{reshipmentSettings,jdbcType=VARCHAR},
+      </if>
+      <if test="isCopyable != null">
+        #{isCopyable,jdbcType=TINYINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnail != null">
+        #{thumbnail,jdbcType=VARCHAR},
+      </if>
+      <if test="isNormal != null">
+        #{isNormal,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.young.model.Answer">
+    update answer
+    <set>
+      <if test="editableContent != null">
+        editable_content = #{editableContent,jdbcType=VARCHAR},
+      </if>
+      <if test="excerpt != null">
+        excerpt = #{excerpt,jdbcType=VARCHAR},
+      </if>
+      <if test="collapsedBy != null">
+        collapsed_by = #{collapsedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null">
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedTime != null">
+        updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="voteupCount != null">
+        voteup_count = #{voteupCount,jdbcType=INTEGER},
+      </if>
+      <if test="isCollapsed != null">
+        is_collapsed = #{isCollapsed,jdbcType=TINYINT},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="commentPermission != null">
+        comment_permission = #{commentPermission,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="commentCount != null">
+        comment_count = #{commentCount,jdbcType=INTEGER},
+      </if>
+      <if test="extras != null">
+        extras = #{extras,jdbcType=VARCHAR},
+      </if>
+      <if test="reshipmentSettings != null">
+        reshipment_settings = #{reshipmentSettings,jdbcType=VARCHAR},
+      </if>
+      <if test="isCopyable != null">
+        is_copyable = #{isCopyable,jdbcType=TINYINT},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnail != null">
+        thumbnail = #{thumbnail,jdbcType=VARCHAR},
+      </if>
+      <if test="isNormal != null">
+        is_normal = #{isNormal,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.young.model.Answer">
+    update answer
+    set editable_content = #{editableContent,jdbcType=VARCHAR},
+    excerpt = #{excerpt,jdbcType=VARCHAR},
+    collapsed_by = #{collapsedBy,jdbcType=VARCHAR},
+    created_time = #{createdTime,jdbcType=TIMESTAMP},
+    updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+    voteup_count = #{voteupCount,jdbcType=INTEGER},
+    is_collapsed = #{isCollapsed,jdbcType=TINYINT},
+    url = #{url,jdbcType=VARCHAR},
+    comment_permission = #{commentPermission,jdbcType=VARCHAR},
+    content = #{content,jdbcType=VARCHAR},
+    comment_count = #{commentCount,jdbcType=INTEGER},
+    extras = #{extras,jdbcType=VARCHAR},
+    reshipment_settings = #{reshipmentSettings,jdbcType=VARCHAR},
+    is_copyable = #{isCopyable,jdbcType=TINYINT},
+    type = #{type,jdbcType=VARCHAR},
+    thumbnail = #{thumbnail,jdbcType=VARCHAR},
+    is_normal = #{isNormal,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

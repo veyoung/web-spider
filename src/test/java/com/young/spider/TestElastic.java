@@ -1,20 +1,20 @@
 package com.young.spider;
 
+import com.young.MyApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import utils.IdGenerator;
-import zhihu.ZhihuApplication;
-import zhihu.com.young.elasticsearch.AnswerSearchRepository;
-import zhihu.com.young.model.Answer;
+import com.young.utils.IdGenerator;
+import com.young.elasticsearch.AnswerSearchRepository;
+import com.young.model.Answer;
 
 /**
  * Created by young on 2017-4-21.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = ZhihuApplication.class)
+@SpringBootTest(classes = MyApplication.class)
 public class TestElastic {
 
     @Autowired
