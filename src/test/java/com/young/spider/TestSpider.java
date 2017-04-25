@@ -9,7 +9,10 @@ import utils.IdGenerator;
 import zhihu.ZhihuApplication;
 import zhihu.com.young.mapper.AnswerMapper;
 import zhihu.com.young.model.Answer;
+import zhihu.com.young.service.CollectionService;
 import zhihu.com.young.service.SpiderService;
+
+import java.util.Set;
 
 /**
  * Created by young on 2017-4-21.
@@ -22,6 +25,8 @@ public class TestSpider {
     private AnswerMapper answerMapper;
     @Autowired
     private SpiderService spiderService;
+    @Autowired
+    private CollectionService collectionService;
 
     @Test
     public void testInsertAnswer() {
@@ -34,5 +39,16 @@ public class TestSpider {
     @Test
     public void saveAnswersToDb() {
         spiderService.saveAnswers("57443806");
+    }
+
+    @Test
+    public void downloadImages() {
+        spiderService.downloadImages("26037846");
+    }
+
+    @Test
+    public void testCollection() {
+        Set<String> questionIds = collectionService.extractQuestionIds("46627456");
+        questionIds.forEach(questionId -> spiderService.downloadImages(questionId));
     }
 }

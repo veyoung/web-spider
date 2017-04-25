@@ -84,7 +84,7 @@ public class SpiderService {
     }
 
     public void downloadImages(String questionId) {
-        System.out.println("start........");
+        System.out.println("start download images of question["+ questionId+"].....");
         List<ZhihuAnswer> answers = listAnswers(questionId);
         if (CollectionUtils.isEmpty(answers)) {
             return;

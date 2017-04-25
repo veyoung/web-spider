@@ -16,10 +16,10 @@ public class CrawlPictures {
     private static final String URL_TEMPLATE = "https://www.189sihu.com/Html/63/index-%s.html";
 
     public Set<String> extractLinks() {
-        Set<String> links = JsoupUtil.getInstance().extractLinksFromPageUrl(URL);
+        Set<String> links = JsoupUtil.getInstance().extractRelativeLinksFromPageUrl(URL);
         for (int i = 2; i < 10; i++) {
             String realUrl = String.format(URL_TEMPLATE, i);
-            Set<String> nextLinks = JsoupUtil.getInstance().extractLinksFromPageUrl(realUrl);
+            Set<String> nextLinks = JsoupUtil.getInstance().extractRelativeLinksFromPageUrl(realUrl);
             links.addAll(nextLinks);
 //            nextLinks.forEach(lik -> System.out.println(lik));
         }

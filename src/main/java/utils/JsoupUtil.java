@@ -1,6 +1,5 @@
 package utils;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
@@ -9,7 +8,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -63,16 +61,31 @@ public class JsoupUtil {
      * @param url
      * @return
      */
-    public Set<String> extractLinksFromPageUrl(String url) {
-
+    public Set<String> extractAbsLinksFromPageUrl(String url) {
         Set<String> urls = Sets.newHashSet();
-        Document document = getDocument(url);
 
-        Elements linkElements = document.select("a[href]");
+        Elements linkElements = extractLinksFromPageUrl(url);
         for (Element link : linkElements) {
             urls.add(link.attr("abs:href"));
         }
         return urls;
+    }
+
+    public Set<String> extractRelativeLinksFromPageUrl(String url) {
+        Set<String> urls = Sets.newHashSet();
+
+        Elements linkElements = extractLinksFromPageUrl(url);
+        for (Element link : linkElements) {
+            urls.add(link.attr("href"));
+        }
+        return urls;
+    }
+
+    public Elements extractLinksFromPageUrl(String url) {
+        Document document = getDocument(url);
+
+        Elements linkElements = document.select("a[href]");
+        return linkElements;
     }
 
     public String extractTitleFromPageUrl(String url) {
@@ -134,7 +147,5 @@ public class JsoupUtil {
 //        Set<String> images = JsoupUtil.getInstance().extractImageUrlsFromPageUrl(url);
 //        System.out.println("The length of images is " + images.size());
 //        images.forEach(imageUrl -> DownloadUtil.getInstance().downloadImageAndSave(imageUrl));
-
-    JsoupUtil.getInstance().extractLinksFromPageUrl("https://www.189sihu.com/Html/63/9641.html");
     }
 }
