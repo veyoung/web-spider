@@ -1,6 +1,7 @@
 package com.young.spider;
 
 import com.young.MyApplication;
+import com.young.zhihu.service.AnswerService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +11,7 @@ import com.young.utils.IdGenerator;
 import com.young.mapper.AnswerMapper;
 import com.young.model.Answer;
 import com.young.zhihu.service.CollectionService;
-import com.young.zhihu.service.SpiderService;
 
-import java.io.IOException;
 import java.util.Set;
 
 /**
@@ -25,7 +24,7 @@ public class TestSpider {
     @Autowired
     private AnswerMapper answerMapper;
     @Autowired
-    private SpiderService spiderService;
+    private AnswerService answerService;
     @Autowired
     private CollectionService collectionService;
 
@@ -39,17 +38,19 @@ public class TestSpider {
 
     @Test
     public void saveAnswersToDb() {
-        spiderService.saveAndIndexAnswers("57443806");
+        answerService.saveAndIndexAnswers("57443806");
     }
 
     @Test
     public void testDownloadImages() {
-        spiderService.downloadImages("57443806");
+        String questionId = "28641536";
+        System.out.println("start test download images of question["+ questionId+"].....");
+        answerService.listAnswers(questionId, true);
     }
 
     @Test
     public void testCollection() {
         Set<String> questionIds = collectionService.extractQuestionIds("46627456");
-        questionIds.forEach(questionId -> spiderService.downloadImages(questionId));
+        questionIds.forEach(questionId -> answerService.listAnswers(questionId, true));
     }
 }

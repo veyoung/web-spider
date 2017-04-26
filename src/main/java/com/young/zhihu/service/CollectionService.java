@@ -49,9 +49,4 @@ public class CollectionService {
         }
         return questionIds;
     }
-
-    public static void main(String[] args) {
-        CollectionService app = new CollectionService();
-        Set<String> questionIds = app.extractQuestionIds("46627456");
-    }
 }

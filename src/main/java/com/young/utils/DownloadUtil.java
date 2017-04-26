@@ -71,7 +71,7 @@ public class DownloadUtil {
             String filePathAndName = file.getPath() + "\\" + fileName;
             File imageFile = new File(filePathAndName);
             if (imageFile.exists()) {
-                System.out.println("image exist...");
+                System.out.println(String.format("Image file[%s] exist...", filePathAndName));
                 return;
             }
 

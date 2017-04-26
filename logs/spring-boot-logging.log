@@ -733,3 +733,263 @@ Caused by: java.net.ConnectException: Connection refused: connect
 2017-04-26 10:43:57.928  INFO 211136 --- [Thread-1] org.elasticsearch.node                   : [James Howlett] stopped
 2017-04-26 10:43:57.928  INFO 211136 --- [Thread-1] org.elasticsearch.node                   : [James Howlett] closing ...
 2017-04-26 10:43:57.944  INFO 211136 --- [Thread-1] org.elasticsearch.node                   : [James Howlett] closed
+2017-04-26 10:53:38.745  INFO 212908 --- [main] com.young.MyApplication                  : Starting MyApplication on young-PC with PID 212908 (D:\git-young\web-spider\target\classes started by young in D:\git-young\web-spider)
+2017-04-26 10:53:38.745  INFO 212908 --- [main] com.young.MyApplication                  : The following profiles are active: mysql,rabbitmq
+2017-04-26 10:53:43.181  INFO 212908 --- [main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2017-04-26 10:53:43.181  INFO 212908 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.5
+2017-04-26 10:53:43.400  INFO 212908 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-04-26 10:53:44.681  INFO 212908 --- [main] org.elasticsearch.node                   : [Mad Thinker] version[2.4.0], pid[212908], build[ce9f0c7/2016-08-29T09:14:17Z]
+2017-04-26 10:53:44.681  INFO 212908 --- [main] org.elasticsearch.node                   : [Mad Thinker] initializing ...
+2017-04-26 10:53:44.697  INFO 212908 --- [main] org.elasticsearch.plugins                : [Mad Thinker] modules [], plugins [], sites []
+2017-04-26 10:53:44.837  INFO 212908 --- [main] org.elasticsearch.env                    : [Mad Thinker] using [1] data paths, mounts [[(D:)]], net usable_space [148.6gb], net total_space [193gb], spins? [unknown], types [NTFS]
+2017-04-26 10:53:44.837  INFO 212908 --- [main] org.elasticsearch.env                    : [Mad Thinker] heap size [1.7gb], compressed ordinary object pointers [true]
+2017-04-26 10:53:47.486  INFO 212908 --- [main] org.elasticsearch.node                   : [Mad Thinker] initialized
+2017-04-26 10:53:47.486  INFO 212908 --- [main] org.elasticsearch.node                   : [Mad Thinker] starting ...
+2017-04-26 10:53:47.486  INFO 212908 --- [main] org.elasticsearch.transport              : [Mad Thinker] publish_address {local[1]}, bound_addresses {local[1]}
+2017-04-26 10:53:47.502  INFO 212908 --- [main] org.elasticsearch.discovery              : [Mad Thinker] elasticsearch/UoopOhiFRKmzvR_MwNEEaA
+2017-04-26 10:53:47.517  INFO 212908 --- [elasticsearch[Mad Thinker][clusterService#updateTask][T#1]] org.elasticsearch.cluster.service        : [Mad Thinker] new_master {Mad Thinker}{UoopOhiFRKmzvR_MwNEEaA}{local}{local[1]}{local=true}, reason: local-disco-initial_connect(master)
+2017-04-26 10:53:47.517  INFO 212908 --- [main] org.elasticsearch.node                   : [Mad Thinker] started
+2017-04-26 10:53:48.299  INFO 212908 --- [elasticsearch[Mad Thinker][clusterService#updateTask][T#1]] org.elasticsearch.gateway                : [Mad Thinker] recovered [1] indices into cluster_state
+2017-04-26 10:53:49.877  INFO 212908 --- [elasticsearch[Mad Thinker][clusterService#updateTask][T#1]] o.e.cluster.routing.allocation           : [Mad Thinker] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[zhihu][0], [zhihu][1], [zhihu][0]] ...]).
+2017-04-26 10:53:50.924  INFO 212908 --- [main] com.young.MyApplication                  : Started MyApplication in 13.566 seconds (JVM running for 14.372)
+2017-04-26 10:56:45.662  INFO 211060 --- [main] com.young.spider.TestSpider              : Starting TestSpider on young-PC with PID 211060 (started by young in D:\git-young\web-spider)
+2017-04-26 10:56:45.662  INFO 211060 --- [main] com.young.spider.TestSpider              : The following profiles are active: mysql,rabbitmq
+2017-04-26 10:56:49.756  INFO 211060 --- [main] org.elasticsearch.node                   : [Desmond Pitt] version[2.4.0], pid[211060], build[ce9f0c7/2016-08-29T09:14:17Z]
+2017-04-26 10:56:49.756  INFO 211060 --- [main] org.elasticsearch.node                   : [Desmond Pitt] initializing ...
+2017-04-26 10:56:49.771  INFO 211060 --- [main] org.elasticsearch.plugins                : [Desmond Pitt] modules [], plugins [], sites []
+2017-04-26 10:56:49.802  INFO 211060 --- [main] org.elasticsearch.env                    : [Desmond Pitt] using [1] data paths, mounts [[(D:)]], net usable_space [148.6gb], net total_space [193gb], spins? [unknown], types [NTFS]
+2017-04-26 10:56:49.802  INFO 211060 --- [main] org.elasticsearch.env                    : [Desmond Pitt] heap size [1.7gb], compressed ordinary object pointers [true]
+2017-04-26 10:56:52.680  INFO 211060 --- [main] org.elasticsearch.node                   : [Desmond Pitt] initialized
+2017-04-26 10:56:52.680  INFO 211060 --- [main] org.elasticsearch.node                   : [Desmond Pitt] starting ...
+2017-04-26 10:56:52.680  INFO 211060 --- [main] org.elasticsearch.transport              : [Desmond Pitt] publish_address {local[1]}, bound_addresses {local[1]}
+2017-04-26 10:56:52.680  INFO 211060 --- [main] org.elasticsearch.discovery              : [Desmond Pitt] elasticsearch/_bMHMxEzT_qsHLpomZg1eQ
+2017-04-26 10:56:52.680  INFO 211060 --- [elasticsearch[Desmond Pitt][clusterService#updateTask][T#1]] org.elasticsearch.cluster.service        : [Desmond Pitt] new_master {Desmond Pitt}{_bMHMxEzT_qsHLpomZg1eQ}{local}{local[1]}{local=true}, reason: local-disco-initial_connect(master)
+2017-04-26 10:56:52.696  INFO 211060 --- [main] org.elasticsearch.node                   : [Desmond Pitt] started
+2017-04-26 10:56:52.977  INFO 211060 --- [elasticsearch[Desmond Pitt][clusterService#updateTask][T#1]] org.elasticsearch.gateway                : [Desmond Pitt] recovered [1] indices into cluster_state
+2017-04-26 10:56:53.977  INFO 211060 --- [elasticsearch[Desmond Pitt][clusterService#updateTask][T#1]] o.e.cluster.routing.allocation           : [Desmond Pitt] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[zhihu][3]] ...]).
+2017-04-26 10:56:55.930  INFO 211060 --- [main] com.young.spider.TestSpider              : Started TestSpider in 11.815 seconds (JVM running for 13.15)
+2017-04-26 10:57:53.311  INFO 211060 --- [Thread-1] org.elasticsearch.node                   : [Desmond Pitt] stopping ...
+2017-04-26 10:57:53.343  INFO 211060 --- [Thread-1] org.elasticsearch.node                   : [Desmond Pitt] stopped
+2017-04-26 10:57:53.343  INFO 211060 --- [Thread-1] org.elasticsearch.node                   : [Desmond Pitt] closing ...
+2017-04-26 10:57:53.358  INFO 211060 --- [Thread-1] org.elasticsearch.node                   : [Desmond Pitt] closed
+2017-04-26 13:27:38.155  INFO 228036 --- [main] com.young.spider.TestSpider              : Starting TestSpider on young-PC with PID 228036 (started by young in D:\git-young\web-spider)
+2017-04-26 13:27:38.155  INFO 228036 --- [main] com.young.spider.TestSpider              : The following profiles are active: mysql,rabbitmq
+2017-04-26 13:27:42.849  INFO 228036 --- [main] org.elasticsearch.node                   : [Gregor Shapanka] version[2.4.0], pid[228036], build[ce9f0c7/2016-08-29T09:14:17Z]
+2017-04-26 13:27:42.849  INFO 228036 --- [main] org.elasticsearch.node                   : [Gregor Shapanka] initializing ...
+2017-04-26 13:27:42.849  INFO 228036 --- [main] org.elasticsearch.plugins                : [Gregor Shapanka] modules [], plugins [], sites []
+2017-04-26 13:27:42.896  INFO 228036 --- [main] org.elasticsearch.env                    : [Gregor Shapanka] using [1] data paths, mounts [[(D:)]], net usable_space [148.8gb], net total_space [193gb], spins? [unknown], types [NTFS]
+2017-04-26 13:27:42.896  INFO 228036 --- [main] org.elasticsearch.env                    : [Gregor Shapanka] heap size [1.7gb], compressed ordinary object pointers [true]
+2017-04-26 13:27:45.919  INFO 228036 --- [main] org.elasticsearch.node                   : [Gregor Shapanka] initialized
+2017-04-26 13:27:45.919  INFO 228036 --- [main] org.elasticsearch.node                   : [Gregor Shapanka] starting ...
+2017-04-26 13:27:45.935  INFO 228036 --- [main] org.elasticsearch.transport              : [Gregor Shapanka] publish_address {local[1]}, bound_addresses {local[1]}
+2017-04-26 13:27:45.935  INFO 228036 --- [main] org.elasticsearch.discovery              : [Gregor Shapanka] elasticsearch/qOqitaFRRmK0_p061ydhMw
+2017-04-26 13:27:45.950  INFO 228036 --- [elasticsearch[Gregor Shapanka][clusterService#updateTask][T#1]] org.elasticsearch.cluster.service        : [Gregor Shapanka] new_master {Gregor Shapanka}{qOqitaFRRmK0_p061ydhMw}{local}{local[1]}{local=true}, reason: local-disco-initial_connect(master)
+2017-04-26 13:27:45.950  INFO 228036 --- [main] org.elasticsearch.node                   : [Gregor Shapanka] started
+2017-04-26 13:27:46.169  INFO 228036 --- [elasticsearch[Gregor Shapanka][clusterService#updateTask][T#1]] org.elasticsearch.gateway                : [Gregor Shapanka] recovered [1] indices into cluster_state
+2017-04-26 13:27:47.341  INFO 228036 --- [elasticsearch[Gregor Shapanka][clusterService#updateTask][T#1]] o.e.cluster.routing.allocation           : [Gregor Shapanka] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[zhihu][1]] ...]).
+2017-04-26 13:27:49.247  INFO 228036 --- [main] com.young.spider.TestSpider              : Started TestSpider in 12.732 seconds (JVM running for 14.107)
+2017-04-26 13:27:52.296  INFO 228036 --- [Thread-1] org.elasticsearch.node                   : [Gregor Shapanka] stopping ...
+2017-04-26 13:27:52.359  INFO 228036 --- [Thread-1] org.elasticsearch.node                   : [Gregor Shapanka] stopped
+2017-04-26 13:27:52.359  INFO 228036 --- [Thread-1] org.elasticsearch.node                   : [Gregor Shapanka] closing ...
+2017-04-26 13:27:52.359  INFO 228036 --- [Thread-1] org.elasticsearch.node                   : [Gregor Shapanka] closed
+2017-04-26 13:28:31.916  INFO 227212 --- [main] com.young.spider.TestSpider              : Starting TestSpider on young-PC with PID 227212 (started by young in D:\git-young\web-spider)
+2017-04-26 13:28:31.916  INFO 227212 --- [main] com.young.spider.TestSpider              : The following profiles are active: mysql,rabbitmq
+2017-04-26 13:28:36.430  INFO 227212 --- [main] org.elasticsearch.node                   : [Contessa] version[2.4.0], pid[227212], build[ce9f0c7/2016-08-29T09:14:17Z]
+2017-04-26 13:28:36.430  INFO 227212 --- [main] org.elasticsearch.node                   : [Contessa] initializing ...
+2017-04-26 13:28:36.446  INFO 227212 --- [main] org.elasticsearch.plugins                : [Contessa] modules [], plugins [], sites []
+2017-04-26 13:28:36.477  INFO 227212 --- [main] org.elasticsearch.env                    : [Contessa] using [1] data paths, mounts [[(D:)]], net usable_space [148.8gb], net total_space [193gb], spins? [unknown], types [NTFS]
+2017-04-26 13:28:36.477  INFO 227212 --- [main] org.elasticsearch.env                    : [Contessa] heap size [1.7gb], compressed ordinary object pointers [true]
+2017-04-26 13:28:39.245  INFO 227212 --- [main] org.elasticsearch.node                   : [Contessa] initialized
+2017-04-26 13:28:39.245  INFO 227212 --- [main] org.elasticsearch.node                   : [Contessa] starting ...
+2017-04-26 13:28:39.261  INFO 227212 --- [main] org.elasticsearch.transport              : [Contessa] publish_address {local[1]}, bound_addresses {local[1]}
+2017-04-26 13:28:39.261  INFO 227212 --- [main] org.elasticsearch.discovery              : [Contessa] elasticsearch/N_HVH0WWSre59VKxDrZqmg
+2017-04-26 13:28:39.276  INFO 227212 --- [elasticsearch[Contessa][clusterService#updateTask][T#1]] org.elasticsearch.cluster.service        : [Contessa] new_master {Contessa}{N_HVH0WWSre59VKxDrZqmg}{local}{local[1]}{local=true}, reason: local-disco-initial_connect(master)
+2017-04-26 13:28:39.276  INFO 227212 --- [main] org.elasticsearch.node                   : [Contessa] started
+2017-04-26 13:28:39.473  INFO 227212 --- [elasticsearch[Contessa][clusterService#updateTask][T#1]] org.elasticsearch.gateway                : [Contessa] recovered [1] indices into cluster_state
+2017-04-26 13:28:40.658  INFO 227212 --- [elasticsearch[Contessa][clusterService#updateTask][T#1]] o.e.cluster.routing.allocation           : [Contessa] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[zhihu][0]] ...]).
+2017-04-26 13:28:42.543  INFO 227212 --- [main] com.young.spider.TestSpider              : Started TestSpider in 12.252 seconds (JVM running for 13.579)
+2017-04-26 13:28:45.602  INFO 227212 --- [Thread-1] org.elasticsearch.node                   : [Contessa] stopping ...
+2017-04-26 13:28:45.649  INFO 227212 --- [Thread-1] org.elasticsearch.node                   : [Contessa] stopped
+2017-04-26 13:28:45.649  INFO 227212 --- [Thread-1] org.elasticsearch.node                   : [Contessa] closing ...
+2017-04-26 13:28:45.649  INFO 227212 --- [Thread-1] org.elasticsearch.node                   : [Contessa] closed
+2017-04-26 13:32:58.602  INFO 227276 --- [main] com.young.spider.TestSpider              : Starting TestSpider on young-PC with PID 227276 (started by young in D:\git-young\web-spider)
+2017-04-26 13:32:58.602  INFO 227276 --- [main] com.young.spider.TestSpider              : The following profiles are active: mysql,rabbitmq
+2017-04-26 13:33:07.606  INFO 227912 --- [main] com.young.spider.TestSpider              : Starting TestSpider on young-PC with PID 227912 (started by young in D:\git-young\web-spider)
+2017-04-26 13:33:07.622  INFO 227912 --- [main] com.young.spider.TestSpider              : The following profiles are active: mysql,rabbitmq
+2017-04-26 13:33:12.688  INFO 227912 --- [main] org.elasticsearch.node                   : [Fin] version[2.4.0], pid[227912], build[ce9f0c7/2016-08-29T09:14:17Z]
+2017-04-26 13:33:12.688  INFO 227912 --- [main] org.elasticsearch.node                   : [Fin] initializing ...
+2017-04-26 13:33:12.704  INFO 227912 --- [main] org.elasticsearch.plugins                : [Fin] modules [], plugins [], sites []
+2017-04-26 13:33:12.751  INFO 227912 --- [main] org.elasticsearch.env                    : [Fin] using [1] data paths, mounts [[(D:)]], net usable_space [148.8gb], net total_space [193gb], spins? [unknown], types [NTFS]
+2017-04-26 13:33:12.751  INFO 227912 --- [main] org.elasticsearch.env                    : [Fin] heap size [1.7gb], compressed ordinary object pointers [true]
+2017-04-26 13:33:15.824  INFO 227912 --- [main] org.elasticsearch.node                   : [Fin] initialized
+2017-04-26 13:33:15.824  INFO 227912 --- [main] org.elasticsearch.node                   : [Fin] starting ...
+2017-04-26 13:33:15.824  INFO 227912 --- [main] org.elasticsearch.transport              : [Fin] publish_address {local[1]}, bound_addresses {local[1]}
+2017-04-26 13:33:15.824  INFO 227912 --- [main] org.elasticsearch.discovery              : [Fin] elasticsearch/i3VgnihxS4Kh8kS2PZLLng
+2017-04-26 13:33:15.840  INFO 227912 --- [elasticsearch[Fin][clusterService#updateTask][T#1]] org.elasticsearch.cluster.service        : [Fin] new_master {Fin}{i3VgnihxS4Kh8kS2PZLLng}{local}{local[1]}{local=true}, reason: local-disco-initial_connect(master)
+2017-04-26 13:33:15.856  INFO 227912 --- [main] org.elasticsearch.node                   : [Fin] started
+2017-04-26 13:33:16.085  INFO 227912 --- [elasticsearch[Fin][clusterService#updateTask][T#1]] org.elasticsearch.gateway                : [Fin] recovered [1] indices into cluster_state
+2017-04-26 13:33:17.272  INFO 227912 --- [elasticsearch[Fin][clusterService#updateTask][T#1]] o.e.cluster.routing.allocation           : [Fin] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[zhihu][2], [zhihu][2]] ...]).
+2017-04-26 13:33:19.969  INFO 227912 --- [main] com.young.spider.TestSpider              : Started TestSpider in 13.515 seconds (JVM running for 16.08)
+2017-04-26 13:36:05.220  INFO 227912 --- [Thread-1] org.elasticsearch.node                   : [Fin] stopping ...
+2017-04-26 13:36:05.267  INFO 227912 --- [Thread-1] org.elasticsearch.node                   : [Fin] stopped
+2017-04-26 13:36:05.267  INFO 227912 --- [Thread-1] org.elasticsearch.node                   : [Fin] closing ...
+2017-04-26 13:36:05.283  INFO 227912 --- [Thread-1] org.elasticsearch.node                   : [Fin] closed
+2017-04-26 13:38:08.681  INFO 212432 --- [main] com.young.MyApplication                  : Starting MyApplication on young-PC with PID 212432 (D:\git-young\web-spider\target\classes started by young in D:\git-young\web-spider)
+2017-04-26 13:38:08.681  INFO 212432 --- [main] com.young.MyApplication                  : The following profiles are active: mysql,rabbitmq
+2017-04-26 13:38:13.243  INFO 212432 --- [main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2017-04-26 13:38:13.245  INFO 212432 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.5
+2017-04-26 13:38:13.517  INFO 212432 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-04-26 13:38:14.837  INFO 212432 --- [main] org.elasticsearch.node                   : [Scott Washington] version[2.4.0], pid[212432], build[ce9f0c7/2016-08-29T09:14:17Z]
+2017-04-26 13:38:14.837  INFO 212432 --- [main] org.elasticsearch.node                   : [Scott Washington] initializing ...
+2017-04-26 13:38:14.853  INFO 212432 --- [main] org.elasticsearch.plugins                : [Scott Washington] modules [], plugins [], sites []
+2017-04-26 13:38:14.993  INFO 212432 --- [main] org.elasticsearch.env                    : [Scott Washington] using [1] data paths, mounts [[(D:)]], net usable_space [148.8gb], net total_space [193gb], spins? [unknown], types [NTFS]
+2017-04-26 13:38:14.993  INFO 212432 --- [main] org.elasticsearch.env                    : [Scott Washington] heap size [1.7gb], compressed ordinary object pointers [true]
+2017-04-26 13:38:17.675  INFO 212432 --- [main] org.elasticsearch.node                   : [Scott Washington] initialized
+2017-04-26 13:38:17.675  INFO 212432 --- [main] org.elasticsearch.node                   : [Scott Washington] starting ...
+2017-04-26 13:38:17.691  INFO 212432 --- [main] org.elasticsearch.transport              : [Scott Washington] publish_address {local[1]}, bound_addresses {local[1]}
+2017-04-26 13:38:17.691  INFO 212432 --- [main] org.elasticsearch.discovery              : [Scott Washington] elasticsearch/L5FfVXRNTc-VpI0SxMSkgQ
+2017-04-26 13:38:17.707  INFO 212432 --- [elasticsearch[Scott Washington][clusterService#updateTask][T#1]] org.elasticsearch.cluster.service        : [Scott Washington] new_master {Scott Washington}{L5FfVXRNTc-VpI0SxMSkgQ}{local}{local[1]}{local=true}, reason: local-disco-initial_connect(master)
+2017-04-26 13:38:17.707  INFO 212432 --- [main] org.elasticsearch.node                   : [Scott Washington] started
+2017-04-26 13:38:17.972  INFO 212432 --- [elasticsearch[Scott Washington][clusterService#updateTask][T#1]] org.elasticsearch.gateway                : [Scott Washington] recovered [1] indices into cluster_state
+2017-04-26 13:38:19.938  INFO 212432 --- [elasticsearch[Scott Washington][clusterService#updateTask][T#1]] o.e.cluster.routing.allocation           : [Scott Washington] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[zhihu][2], [zhihu][2]] ...]).
+2017-04-26 13:38:20.779  INFO 212432 --- [main] com.young.MyApplication                  : Started MyApplication in 13.395 seconds (JVM running for 14.249)
+2017-04-26 13:41:27.554  INFO 228376 --- [main] com.young.spider.TestSpider              : Starting TestSpider on young-PC with PID 228376 (started by young in D:\git-young\web-spider)
+2017-04-26 13:41:27.554  INFO 228376 --- [main] com.young.spider.TestSpider              : The following profiles are active: mysql,rabbitmq
+2017-04-26 13:41:33.314  INFO 228376 --- [main] org.elasticsearch.node                   : [Rattler] version[2.4.0], pid[228376], build[ce9f0c7/2016-08-29T09:14:17Z]
+2017-04-26 13:41:33.330  INFO 228376 --- [main] org.elasticsearch.node                   : [Rattler] initializing ...
+2017-04-26 13:41:33.330  INFO 228376 --- [main] org.elasticsearch.plugins                : [Rattler] modules [], plugins [], sites []
+2017-04-26 13:41:33.377  INFO 228376 --- [main] org.elasticsearch.env                    : [Rattler] using [1] data paths, mounts [[(D:)]], net usable_space [148.8gb], net total_space [193gb], spins? [unknown], types [NTFS]
+2017-04-26 13:41:33.377  INFO 228376 --- [main] org.elasticsearch.env                    : [Rattler] heap size [1.7gb], compressed ordinary object pointers [true]
+2017-04-26 13:41:36.464  INFO 228376 --- [main] org.elasticsearch.node                   : [Rattler] initialized
+2017-04-26 13:41:36.464  INFO 228376 --- [main] org.elasticsearch.node                   : [Rattler] starting ...
+2017-04-26 13:41:36.485  INFO 228376 --- [main] org.elasticsearch.transport              : [Rattler] publish_address {local[1]}, bound_addresses {local[1]}
+2017-04-26 13:41:36.491  INFO 228376 --- [main] org.elasticsearch.discovery              : [Rattler] elasticsearch/Aja_GLEJTAeb_7V2Ggls7w
+2017-04-26 13:41:36.494  INFO 228376 --- [elasticsearch[Rattler][clusterService#updateTask][T#1]] org.elasticsearch.cluster.service        : [Rattler] new_master {Rattler}{Aja_GLEJTAeb_7V2Ggls7w}{local}{local[1]}{local=true}, reason: local-disco-initial_connect(master)
+2017-04-26 13:41:36.510  INFO 228376 --- [main] org.elasticsearch.node                   : [Rattler] started
+2017-04-26 13:41:36.869  INFO 228376 --- [elasticsearch[Rattler][clusterService#updateTask][T#1]] org.elasticsearch.gateway                : [Rattler] recovered [1] indices into cluster_state
+2017-04-26 13:41:37.964  INFO 228376 --- [elasticsearch[Rattler][clusterService#updateTask][T#1]] o.e.cluster.routing.allocation           : [Rattler] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[zhihu][1]] ...]).
+2017-04-26 13:41:40.789  INFO 228376 --- [main] com.young.spider.TestSpider              : Started TestSpider in 14.898 seconds (JVM running for 16.556)
+2017-04-26 13:41:52.133  INFO 228376 --- [Thread-1] org.elasticsearch.node                   : [Rattler] stopping ...
+2017-04-26 13:41:52.180  INFO 228376 --- [Thread-1] org.elasticsearch.node                   : [Rattler] stopped
+2017-04-26 13:41:52.180  INFO 228376 --- [Thread-1] org.elasticsearch.node                   : [Rattler] closing ...
+2017-04-26 13:41:52.180  INFO 228376 --- [Thread-1] org.elasticsearch.node                   : [Rattler] closed
+2017-04-26 13:44:44.903  INFO 225800 --- [main] com.young.spider.TestSpider              : Starting TestSpider on young-PC with PID 225800 (started by young in D:\git-young\web-spider)
+2017-04-26 13:44:44.903  INFO 225800 --- [main] com.young.spider.TestSpider              : The following profiles are active: mysql,rabbitmq
+2017-04-26 13:44:50.493  INFO 225800 --- [main] org.elasticsearch.node                   : [James Proudstar] version[2.4.0], pid[225800], build[ce9f0c7/2016-08-29T09:14:17Z]
+2017-04-26 13:44:50.493  INFO 225800 --- [main] org.elasticsearch.node                   : [James Proudstar] initializing ...
+2017-04-26 13:44:50.509  INFO 225800 --- [main] org.elasticsearch.plugins                : [James Proudstar] modules [], plugins [], sites []
+2017-04-26 13:44:50.556  INFO 225800 --- [main] org.elasticsearch.env                    : [James Proudstar] using [1] data paths, mounts [[(D:)]], net usable_space [148.8gb], net total_space [193gb], spins? [unknown], types [NTFS]
+2017-04-26 13:44:50.556  INFO 225800 --- [main] org.elasticsearch.env                    : [James Proudstar] heap size [1.7gb], compressed ordinary object pointers [true]
+2017-04-26 13:44:53.701  INFO 225800 --- [main] org.elasticsearch.node                   : [James Proudstar] initialized
+2017-04-26 13:44:53.701  INFO 225800 --- [main] org.elasticsearch.node                   : [James Proudstar] starting ...
+2017-04-26 13:44:53.717  INFO 225800 --- [main] org.elasticsearch.transport              : [James Proudstar] publish_address {local[1]}, bound_addresses {local[1]}
+2017-04-26 13:44:53.717  INFO 225800 --- [main] org.elasticsearch.discovery              : [James Proudstar] elasticsearch/tbdmRqrrTTmvscTdhyOnRw
+2017-04-26 13:44:53.732  INFO 225800 --- [elasticsearch[James Proudstar][clusterService#updateTask][T#1]] org.elasticsearch.cluster.service        : [James Proudstar] new_master {James Proudstar}{tbdmRqrrTTmvscTdhyOnRw}{local}{local[1]}{local=true}, reason: local-disco-initial_connect(master)
+2017-04-26 13:44:53.732  INFO 225800 --- [main] org.elasticsearch.node                   : [James Proudstar] started
+2017-04-26 13:44:53.982  INFO 225800 --- [elasticsearch[James Proudstar][clusterService#updateTask][T#1]] org.elasticsearch.gateway                : [James Proudstar] recovered [1] indices into cluster_state
+2017-04-26 13:44:55.092  INFO 225800 --- [elasticsearch[James Proudstar][clusterService#updateTask][T#1]] o.e.cluster.routing.allocation           : [James Proudstar] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[zhihu][0]] ...]).
+2017-04-26 13:44:57.327  INFO 225800 --- [main] com.young.spider.TestSpider              : Started TestSpider in 14.662 seconds (JVM running for 16.016)
+2017-04-26 13:45:01.016  INFO 225800 --- [Thread-1] org.elasticsearch.node                   : [James Proudstar] stopping ...
+2017-04-26 13:45:01.094  INFO 225800 --- [Thread-1] org.elasticsearch.node                   : [James Proudstar] stopped
+2017-04-26 13:45:01.094  INFO 225800 --- [Thread-1] org.elasticsearch.node                   : [James Proudstar] closing ...
+2017-04-26 13:45:01.094  INFO 225800 --- [Thread-1] org.elasticsearch.node                   : [James Proudstar] closed
+2017-04-26 13:55:52.634  INFO 229836 --- [main] com.young.spider.TestSpider              : Starting TestSpider on young-PC with PID 229836 (started by young in D:\git-young\web-spider)
+2017-04-26 13:55:52.634  INFO 229836 --- [main] com.young.spider.TestSpider              : The following profiles are active: mysql,rabbitmq
+2017-04-26 13:55:57.156  INFO 229836 --- [main] org.elasticsearch.node                   : [Mantra] version[2.4.0], pid[229836], build[ce9f0c7/2016-08-29T09:14:17Z]
+2017-04-26 13:55:57.156  INFO 229836 --- [main] org.elasticsearch.node                   : [Mantra] initializing ...
+2017-04-26 13:55:57.156  INFO 229836 --- [main] org.elasticsearch.plugins                : [Mantra] modules [], plugins [], sites []
+2017-04-26 13:55:57.187  INFO 229836 --- [main] org.elasticsearch.env                    : [Mantra] using [1] data paths, mounts [[(D:)]], net usable_space [148.8gb], net total_space [193gb], spins? [unknown], types [NTFS]
+2017-04-26 13:55:57.187  INFO 229836 --- [main] org.elasticsearch.env                    : [Mantra] heap size [1.7gb], compressed ordinary object pointers [true]
+2017-04-26 13:56:00.031  INFO 229836 --- [main] org.elasticsearch.node                   : [Mantra] initialized
+2017-04-26 13:56:00.031  INFO 229836 --- [main] org.elasticsearch.node                   : [Mantra] starting ...
+2017-04-26 13:56:00.047  INFO 229836 --- [main] org.elasticsearch.transport              : [Mantra] publish_address {local[1]}, bound_addresses {local[1]}
+2017-04-26 13:56:00.047  INFO 229836 --- [main] org.elasticsearch.discovery              : [Mantra] elasticsearch/uVJoRQm8R2-HjPAEP5GV1A
+2017-04-26 13:56:00.062  INFO 229836 --- [elasticsearch[Mantra][clusterService#updateTask][T#1]] org.elasticsearch.cluster.service        : [Mantra] new_master {Mantra}{uVJoRQm8R2-HjPAEP5GV1A}{local}{local[1]}{local=true}, reason: local-disco-initial_connect(master)
+2017-04-26 13:56:00.062  INFO 229836 --- [main] org.elasticsearch.node                   : [Mantra] started
+2017-04-26 13:56:00.359  INFO 229836 --- [elasticsearch[Mantra][clusterService#updateTask][T#1]] org.elasticsearch.gateway                : [Mantra] recovered [1] indices into cluster_state
+2017-04-26 13:56:01.359  INFO 229836 --- [elasticsearch[Mantra][clusterService#updateTask][T#1]] o.e.cluster.routing.allocation           : [Mantra] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[zhihu][2]] ...]).
+2017-04-26 13:56:03.274  INFO 229836 --- [main] com.young.spider.TestSpider              : Started TestSpider in 12.578 seconds (JVM running for 13.974)
+2017-04-26 13:56:06.010  INFO 229836 --- [Thread-1] org.elasticsearch.node                   : [Mantra] stopping ...
+2017-04-26 13:56:06.057  INFO 229836 --- [Thread-1] org.elasticsearch.node                   : [Mantra] stopped
+2017-04-26 13:56:06.057  INFO 229836 --- [Thread-1] org.elasticsearch.node                   : [Mantra] closing ...
+2017-04-26 13:56:06.057  INFO 229836 --- [Thread-1] org.elasticsearch.node                   : [Mantra] closed
+2017-04-26 14:01:49.112  INFO 230764 --- [main] com.young.MyApplication                  : Starting MyApplication on young-PC with PID 230764 (D:\git-young\web-spider\target\classes started by young in D:\git-young\web-spider)
+2017-04-26 14:01:49.118  INFO 230764 --- [main] com.young.MyApplication                  : The following profiles are active: mysql,rabbitmq
+2017-04-26 14:01:52.833  INFO 230764 --- [main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2017-04-26 14:01:52.833  INFO 230764 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.5
+2017-04-26 14:01:53.052  INFO 230764 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-04-26 14:01:54.369  INFO 230764 --- [main] org.elasticsearch.node                   : [Sybil Dorn] version[2.4.0], pid[230764], build[ce9f0c7/2016-08-29T09:14:17Z]
+2017-04-26 14:01:54.369  INFO 230764 --- [main] org.elasticsearch.node                   : [Sybil Dorn] initializing ...
+2017-04-26 14:01:54.384  INFO 230764 --- [main] org.elasticsearch.plugins                : [Sybil Dorn] modules [], plugins [], sites []
+2017-04-26 14:01:54.572  INFO 230764 --- [main] org.elasticsearch.env                    : [Sybil Dorn] using [1] data paths, mounts [[(D:)]], net usable_space [148.8gb], net total_space [193gb], spins? [unknown], types [NTFS]
+2017-04-26 14:01:54.572  INFO 230764 --- [main] org.elasticsearch.env                    : [Sybil Dorn] heap size [1.7gb], compressed ordinary object pointers [true]
+2017-04-26 14:01:57.214  INFO 230764 --- [main] org.elasticsearch.node                   : [Sybil Dorn] initialized
+2017-04-26 14:01:57.215  INFO 230764 --- [main] org.elasticsearch.node                   : [Sybil Dorn] starting ...
+2017-04-26 14:01:57.219  INFO 230764 --- [main] org.elasticsearch.transport              : [Sybil Dorn] publish_address {local[1]}, bound_addresses {local[1]}
+2017-04-26 14:01:57.224  INFO 230764 --- [main] org.elasticsearch.discovery              : [Sybil Dorn] elasticsearch/h8i-lCKSSXCj4HDWNQuArA
+2017-04-26 14:01:57.235  INFO 230764 --- [elasticsearch[Sybil Dorn][clusterService#updateTask][T#1]] org.elasticsearch.cluster.service        : [Sybil Dorn] new_master {Sybil Dorn}{h8i-lCKSSXCj4HDWNQuArA}{local}{local[1]}{local=true}, reason: local-disco-initial_connect(master)
+2017-04-26 14:01:57.238  INFO 230764 --- [main] org.elasticsearch.node                   : [Sybil Dorn] started
+2017-04-26 14:01:57.486  INFO 230764 --- [elasticsearch[Sybil Dorn][clusterService#updateTask][T#1]] org.elasticsearch.gateway                : [Sybil Dorn] recovered [1] indices into cluster_state
+2017-04-26 14:01:59.062  INFO 230764 --- [elasticsearch[Sybil Dorn][clusterService#updateTask][T#1]] o.e.cluster.routing.allocation           : [Sybil Dorn] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[zhihu][0]] ...]).
+2017-04-26 14:02:00.094  INFO 230764 --- [main] com.young.MyApplication                  : Started MyApplication in 12.488 seconds (JVM running for 13.338)
+2017-04-26 14:02:16.867  INFO 231260 --- [main] com.young.spider.TestSpider              : Starting TestSpider on young-PC with PID 231260 (started by young in D:\git-young\web-spider)
+2017-04-26 14:02:16.867  INFO 231260 --- [main] com.young.spider.TestSpider              : The following profiles are active: mysql,rabbitmq
+2017-04-26 14:02:21.073  INFO 231260 --- [main] org.elasticsearch.node                   : [Derrick Slegers Speed] version[2.4.0], pid[231260], build[ce9f0c7/2016-08-29T09:14:17Z]
+2017-04-26 14:02:21.073  INFO 231260 --- [main] org.elasticsearch.node                   : [Derrick Slegers Speed] initializing ...
+2017-04-26 14:02:21.073  INFO 231260 --- [main] org.elasticsearch.plugins                : [Derrick Slegers Speed] modules [], plugins [], sites []
+2017-04-26 14:02:21.105  INFO 231260 --- [main] org.elasticsearch.env                    : [Derrick Slegers Speed] using [1] data paths, mounts [[(D:)]], net usable_space [148.8gb], net total_space [193gb], spins? [unknown], types [NTFS]
+2017-04-26 14:02:21.105  INFO 231260 --- [main] org.elasticsearch.env                    : [Derrick Slegers Speed] heap size [1.7gb], compressed ordinary object pointers [true]
+2017-04-26 14:02:24.136  INFO 231260 --- [main] org.elasticsearch.node                   : [Derrick Slegers Speed] initialized
+2017-04-26 14:02:24.136  INFO 231260 --- [main] org.elasticsearch.node                   : [Derrick Slegers Speed] starting ...
+2017-04-26 14:02:24.136  INFO 231260 --- [main] org.elasticsearch.transport              : [Derrick Slegers Speed] publish_address {local[1]}, bound_addresses {local[1]}
+2017-04-26 14:02:24.151  INFO 231260 --- [main] org.elasticsearch.discovery              : [Derrick Slegers Speed] elasticsearch/tT88k7XNR3-vrwxu0-m0rA
+2017-04-26 14:02:24.151  INFO 231260 --- [elasticsearch[Derrick Slegers Speed][clusterService#updateTask][T#1]] org.elasticsearch.cluster.service        : [Derrick Slegers Speed] new_master {Derrick Slegers Speed}{tT88k7XNR3-vrwxu0-m0rA}{local}{local[1]}{local=true}, reason: local-disco-initial_connect(master)
+2017-04-26 14:02:24.167  INFO 231260 --- [main] org.elasticsearch.node                   : [Derrick Slegers Speed] started
+2017-04-26 14:02:24.360  INFO 231260 --- [elasticsearch[Derrick Slegers Speed][clusterService#updateTask][T#1]] org.elasticsearch.gateway                : [Derrick Slegers Speed] recovered [1] indices into cluster_state
+2017-04-26 14:02:25.336  INFO 231260 --- [elasticsearch[Derrick Slegers Speed][clusterService#updateTask][T#1]] o.e.cluster.routing.allocation           : [Derrick Slegers Speed] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[zhihu][1]] ...]).
+2017-04-26 14:02:27.365  INFO 231260 --- [main] com.young.spider.TestSpider              : Started TestSpider in 12.625 seconds (JVM running for 13.959)
+2017-04-26 14:02:30.167  INFO 231260 --- [Thread-1] org.elasticsearch.node                   : [Derrick Slegers Speed] stopping ...
+2017-04-26 14:02:30.229  INFO 231260 --- [Thread-1] org.elasticsearch.node                   : [Derrick Slegers Speed] stopped
+2017-04-26 14:02:30.245  INFO 231260 --- [Thread-1] org.elasticsearch.node                   : [Derrick Slegers Speed] closing ...
+2017-04-26 14:02:30.245  INFO 231260 --- [Thread-1] org.elasticsearch.node                   : [Derrick Slegers Speed] closed
+2017-04-26 14:19:20.479  INFO 230764 --- [http-nio-9999-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2017-04-26 15:18:22.388  INFO 238100 --- [main] com.young.MyApplication                  : Starting MyApplication on young-PC with PID 238100 (D:\git-young\web-spider\target\classes started by young in D:\git-young\web-spider)
+2017-04-26 15:18:22.418  INFO 238100 --- [main] com.young.MyApplication                  : The following profiles are active: mysql,rabbitmq
+2017-04-26 15:18:27.864  INFO 238100 --- [main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2017-04-26 15:18:27.866  INFO 238100 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.5
+2017-04-26 15:18:28.116  INFO 238100 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-04-26 15:18:30.091  INFO 238100 --- [main] org.elasticsearch.node                   : [Charon] version[2.4.0], pid[238100], build[ce9f0c7/2016-08-29T09:14:17Z]
+2017-04-26 15:18:30.091  INFO 238100 --- [main] org.elasticsearch.node                   : [Charon] initializing ...
+2017-04-26 15:18:30.103  INFO 238100 --- [main] org.elasticsearch.plugins                : [Charon] modules [], plugins [], sites []
+2017-04-26 15:18:30.370  INFO 238100 --- [main] org.elasticsearch.env                    : [Charon] using [1] data paths, mounts [[(D:)]], net usable_space [148.8gb], net total_space [193gb], spins? [unknown], types [NTFS]
+2017-04-26 15:18:30.371  INFO 238100 --- [main] org.elasticsearch.env                    : [Charon] heap size [1.7gb], compressed ordinary object pointers [true]
+2017-04-26 15:18:33.890  INFO 238100 --- [main] org.elasticsearch.node                   : [Charon] initialized
+2017-04-26 15:18:33.891  INFO 238100 --- [main] org.elasticsearch.node                   : [Charon] starting ...
+2017-04-26 15:18:33.895  INFO 238100 --- [main] org.elasticsearch.transport              : [Charon] publish_address {local[1]}, bound_addresses {local[1]}
+2017-04-26 15:18:33.899  INFO 238100 --- [main] org.elasticsearch.discovery              : [Charon] elasticsearch/5HvW1vCpTVe7r9GEDHPsQQ
+2017-04-26 15:18:33.914  INFO 238100 --- [elasticsearch[Charon][clusterService#updateTask][T#1]] org.elasticsearch.cluster.service        : [Charon] new_master {Charon}{5HvW1vCpTVe7r9GEDHPsQQ}{local}{local[1]}{local=true}, reason: local-disco-initial_connect(master)
+2017-04-26 15:18:33.925  INFO 238100 --- [main] org.elasticsearch.node                   : [Charon] started
+2017-04-26 15:18:34.601  INFO 238100 --- [elasticsearch[Charon][clusterService#updateTask][T#1]] org.elasticsearch.gateway                : [Charon] recovered [1] indices into cluster_state
+2017-04-26 15:18:37.561  INFO 238100 --- [elasticsearch[Charon][clusterService#updateTask][T#1]] o.e.cluster.routing.allocation           : [Charon] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[zhihu][0], [zhihu][0]] ...]).
+2017-04-26 15:18:38.660  INFO 238100 --- [main] com.young.MyApplication                  : Started MyApplication in 18.24 seconds (JVM running for 19.295)
+2017-04-26 15:19:21.961  INFO 238100 --- [http-nio-9999-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2017-04-26 15:21:28.138  INFO 239248 --- [main] com.young.MyApplication                  : Starting MyApplication on young-PC with PID 239248 (D:\git-young\web-spider\target\classes started by young in D:\git-young\web-spider)
+2017-04-26 15:21:28.153  INFO 239248 --- [main] com.young.MyApplication                  : The following profiles are active: mysql,rabbitmq
+2017-04-26 15:21:32.326  INFO 239248 --- [main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2017-04-26 15:21:32.326  INFO 239248 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.5
+2017-04-26 15:21:32.545  INFO 239248 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-04-26 15:21:34.041  INFO 239248 --- [main] org.elasticsearch.node                   : [Living Colossus] version[2.4.0], pid[239248], build[ce9f0c7/2016-08-29T09:14:17Z]
+2017-04-26 15:21:34.041  INFO 239248 --- [main] org.elasticsearch.node                   : [Living Colossus] initializing ...
+2017-04-26 15:21:34.057  INFO 239248 --- [main] org.elasticsearch.plugins                : [Living Colossus] modules [], plugins [], sites []
+2017-04-26 15:21:34.182  INFO 239248 --- [main] org.elasticsearch.env                    : [Living Colossus] using [1] data paths, mounts [[(D:)]], net usable_space [148.8gb], net total_space [193gb], spins? [unknown], types [NTFS]
+2017-04-26 15:21:34.182  INFO 239248 --- [main] org.elasticsearch.env                    : [Living Colossus] heap size [1.7gb], compressed ordinary object pointers [true]
+2017-04-26 15:21:37.004  INFO 239248 --- [main] org.elasticsearch.node                   : [Living Colossus] initialized
+2017-04-26 15:21:37.004  INFO 239248 --- [main] org.elasticsearch.node                   : [Living Colossus] starting ...
+2017-04-26 15:21:37.004  INFO 239248 --- [main] org.elasticsearch.transport              : [Living Colossus] publish_address {local[1]}, bound_addresses {local[1]}
+2017-04-26 15:21:37.019  INFO 239248 --- [main] org.elasticsearch.discovery              : [Living Colossus] elasticsearch/_oLs7pubRPCsLrF3lSpa6Q
+2017-04-26 15:21:37.019  INFO 239248 --- [elasticsearch[Living Colossus][clusterService#updateTask][T#1]] org.elasticsearch.cluster.service        : [Living Colossus] new_master {Living Colossus}{_oLs7pubRPCsLrF3lSpa6Q}{local}{local[1]}{local=true}, reason: local-disco-initial_connect(master)
+2017-04-26 15:21:37.035  INFO 239248 --- [main] org.elasticsearch.node                   : [Living Colossus] started
+2017-04-26 15:21:37.504  INFO 239248 --- [elasticsearch[Living Colossus][clusterService#updateTask][T#1]] org.elasticsearch.gateway                : [Living Colossus] recovered [1] indices into cluster_state
+2017-04-26 15:21:38.707  INFO 239248 --- [elasticsearch[Living Colossus][clusterService#updateTask][T#1]] o.e.cluster.routing.allocation           : [Living Colossus] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[zhihu][3], [zhihu][3]] ...]).
+2017-04-26 15:21:40.457  INFO 239248 --- [main] com.young.MyApplication                  : Started MyApplication in 13.804 seconds (JVM running for 14.66)
+2017-04-26 15:21:49.232  INFO 239248 --- [http-nio-9999-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
