@@ -2,6 +2,7 @@ package com.young.zhihu.service;
 
 import com.google.common.collect.Maps;
 import com.young.mapper.AnswerMapper;
+import com.young.message.DownloadImageSender;
 import com.young.model.Answer;
 import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.util.Lists;
@@ -16,6 +17,7 @@ import com.young.model.ZhihuAnswer;
 import com.young.model.ZhihuResult;
 
 import javax.annotation.PostConstruct;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -43,6 +45,9 @@ public class SpiderService {
     @Autowired
     private AnswerSearchRepository articleSearchRepository;
 
+    @Autowired
+    private DownloadImageSender downloadImageSender;
+
     private ExecutorService executorService;
 
 
@@ -62,11 +67,13 @@ public class SpiderService {
      * @param questionId  问题id
      * @return
      */
-    public List<ZhihuAnswer> listAnswers(String questionId) {
+    public List<ZhihuAnswer> listAnswers(String questionId, Boolean isDownloadImage) {
         List<ZhihuAnswer> answers = Lists.newArrayList();
 
         System.out.println("start acquire answers........");
         String url = String.format(QUESTION_URL_TEMPLATE, questionId);
+
+        // 抓取answer的第一次请求
         ZhihuResult firstPageResult = HttpUtil.instance().get(url,
                 HttpUtil.buildAuthorizationHeaderMap(ACCESS_TOKEN),
                 queryParams,
@@ -76,8 +83,14 @@ public class SpiderService {
         Integer totals = firstPageResult.getPaging().getTotals();
         if (firstPageResult.getData() != null) {
             answers.addAll(firstPageResult.getData());
+
+            if (isDownloadImage) {
+                // 将一次http请求获取到的部分answer推送到rabbitmq，接收端异步下载answer中包含的图片
+                downloadImageSender.send(firstPageResult.getData());
+            }
         }
 
+        // 抓取answer的第2,3,4....n次请求
         Integer offset = PAGE_SIZE;
         for(int i = 0; i< totals/PAGE_SIZE; i++) {
             queryParams.put("offset", offset);
@@ -93,6 +106,11 @@ public class SpiderService {
 
             if (currentPage.getData() != null) {
                 answers.addAll(currentPage.getData());
+
+                if (isDownloadImage) {
+                    // answer集合推送到mq中
+                    downloadImageSender.send(firstPageResult.getData());
+                }
             }
             offset += PAGE_SIZE;
         }
@@ -109,11 +127,7 @@ public class SpiderService {
         System.out.println("------------start download images-------------");
         Long startTime = System.currentTimeMillis();
 
-        List<ZhihuAnswer> answers = listAnswers(questionId);
-        if (CollectionUtils.isEmpty(answers)) {
-            return;
-        }
-        downloadImages(answers);
+        List<ZhihuAnswer> answers = listAnswers(questionId, true);
 
         Long time = (System.currentTimeMillis() - startTime) / 1000;
         System.out.println("time is " + time + " s");
@@ -130,6 +144,7 @@ public class SpiderService {
             return;
         }
 
+        System.out.println("----------start download images task, the size of answers is" + answers.size());
         String answerName = answers.get(0).getQuestion().getTitle();
         for (ZhihuAnswer answer : answers) {
             //String folder = answerName + "/" + answer.getId().toString();
@@ -143,10 +158,9 @@ public class SpiderService {
         }
     }
 
-
-    public Boolean saveAnswers(String questionId) {
+    public Boolean saveAndIndexAnswers(String questionId) {
         try {
-            List<ZhihuAnswer> answers = listAnswers(questionId);
+            List<ZhihuAnswer> answers = listAnswers(questionId, false);
             for (ZhihuAnswer zhihuAnswer : answers) {
                 Answer answer = convertZhihuAnswer(zhihuAnswer);
                 Answer existAnswer = answerMapper.selectByPrimaryKey(answer.getId());
@@ -162,6 +176,11 @@ public class SpiderService {
         }
     }
 
+    /**
+     * ZhihuAnswer转为Answer
+     * @param zhihuAnswer 待转换的bean
+     * @return
+     */
     private Answer convertZhihuAnswer(ZhihuAnswer zhihuAnswer) {
         if (zhihuAnswer == null) {
             return null;

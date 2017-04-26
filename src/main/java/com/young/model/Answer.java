@@ -186,4 +186,28 @@ public class Answer implements Serializable {
     public void setIsNormal(Boolean isNormal) {
         this.isNormal = isNormal;
     }
+
+    @Override
+    public String toString() {
+        return "Answer{" +
+                "id=" + id +
+                ", editableContent='" + editableContent + '\'' +
+                ", excerpt='" + excerpt + '\'' +
+                ", collapsedBy='" + collapsedBy + '\'' +
+                ", createdTime=" + createdTime +
+                ", updatedTime=" + updatedTime +
+                ", voteupCount=" + voteupCount +
+                ", isCollapsed=" + isCollapsed +
+                ", url='" + url + '\'' +
+                ", commentPermission='" + commentPermission + '\'' +
+                ", content='" + content + '\'' +
+                ", commentCount=" + commentCount +
+                ", extras='" + extras + '\'' +
+                ", reshipmentSettings='" + reshipmentSettings + '\'' +
+                ", isCopyable=" + isCopyable +
+                ", type='" + type + '\'' +
+                ", thumbnail='" + thumbnail + '\'' +
+                ", isNormal=" + isNormal +
+                '}';
+    }
 }

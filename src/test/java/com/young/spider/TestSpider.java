@@ -39,17 +39,12 @@ public class TestSpider {
 
     @Test
     public void saveAnswersToDb() {
-        spiderService.saveAnswers("57443806");
+        spiderService.saveAndIndexAnswers("57443806");
     }
 
     @Test
     public void testDownloadImages() {
         spiderService.downloadImages("57443806");
-        try {
-          Thread.sleep(100000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     @Test

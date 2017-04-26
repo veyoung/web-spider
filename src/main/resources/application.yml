@@ -2,7 +2,7 @@ server:
   port: 9999
 spring:
   profiles: default
-  profiles.include: mysql
+  profiles.include: mysql, rabbitmq
 ---
 spring:
   profiles: mysql
